@@ -12,11 +12,11 @@ def gen_frames():
         if not success:
             break
         else:
-            detector = cv2.CascadeClassifier('Haarcascades/haarcascade_frontalface_default.xml')
+            face_detector = cv2.CascadeClassifier('Haarcascades/haarcascade_frontalface_default.xml')
             eye_cascade = cv2.CascadeClassifier('Haarcascades/haarcascade_eye.xml')
-            faces = detector.detectMultiScale(frame, 1.1, 7)
+            faces = face_detector.detectMultiScale(frame, 1.1, 7)
             gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-            # Draw the rectangle around each face
+            # rectangle around for each face
             for (x, y, w, h) in faces:
                 cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
                 roi_gray = gray[y:y + h, x:x + w]
